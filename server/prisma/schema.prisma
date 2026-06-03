@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+ 
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  positions UserPosition[]
+
+  @@map("users")
+}
+
+model Permission {
+  id       Int    @id @default(autoincrement())
+  position String
+  role     String
+  action   String
+
+  @@map("permissions")
+}
+
+model UserPosition {
+  id              Int     @id @default(autoincrement())
+  userId          Int     @map("user_id")
+  position        String
+  role            String
+  sellerCompanyId Int?    @map("seller_company_id")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_positions")
+}
+ 
