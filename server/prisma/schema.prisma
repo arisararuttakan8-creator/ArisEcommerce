@@ -9,13 +9,14 @@ datasource db {
  
 model User {
   id        Int      @id @default(autoincrement())
-  username  String   @unique
   email     String   @unique
   password  String
+  firstName String   @map("first_name")
+  lastName  String   @map("last_name")
   createdAt DateTime @default(now()) @map("created_at")
 
   positions UserPosition[]
-
+  
   @@map("users")
 }
 

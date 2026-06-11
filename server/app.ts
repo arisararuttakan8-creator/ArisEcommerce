@@ -1,5 +1,5 @@
 import  express from "express";
-import apiRouter from './src/routes/index.js'
+import apiRouter from './routes/index.js'
 // import cors from 'cors'
 const app = express();
 
@@ -8,7 +8,7 @@ const app = express();
 
 //     )
 // )
-
+app.use(express.json())
 app.get('/',(_req, res)=>{
     res.json({ name: 'aris-ecommerce-api', version: '1.0.0'})
 })

@@ -1,8 +1,7 @@
 import { Router } from "express";
 import { Prisma } from "@prisma/client/extension";
-import { asyncHandler } from "../../middleware/asyncHandler.js";
-import { prisma } from "../../lib/prisma.js";
-import { timeStamp } from "console";
+import { asyncHandler } from "../middleware/asyncHandler.js";
+import { prisma } from "../lib/prisma.js";
 
 const router = Router();
 router.get( 
